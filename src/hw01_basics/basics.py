@@ -25,7 +25,7 @@ Happy coding!
 
 def hello_semester():
     """ Print the string 'Welcome to "Symbolische Programmierung" WS 20/21'.
-    >>> hello_semester() asasd
+    >>> hello_semester()
     Welcome to "Symbolische Programmierung" WS 20/21
     """
     pass
