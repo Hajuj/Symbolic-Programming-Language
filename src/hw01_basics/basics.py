@@ -28,6 +28,8 @@ def hello_semester():
     >>> hello_semester()
     Welcome to "Symbolische Programmierung" WS 20/21
     """
+
+    print("Welcome to \"Symbolische Programmierung\"")
     pass
 
 
