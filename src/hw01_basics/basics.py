@@ -28,7 +28,10 @@ def hello_semester():
     >>> hello_semester()
     Welcome to "Symbolische Programmierung" WS 20/21
     """
-    pass
+    print('Welcome to "Symbolische Programmierung"')
+
+
+print(hello_semester())
 
 
 def modulo(x, y):
@@ -40,7 +43,9 @@ def modulo(x, y):
     >>> modulo(70, 7)
     0
     """
+    return x % y
     pass
+
 
 def odd_number(x):
     """ Return True or False whether x is odd or not.
@@ -51,7 +56,11 @@ def odd_number(x):
     >>> odd_number(-3)
     True
     """
-    pass
+    return x % 2 != 0
+
+
+print(odd_number(4))
+
 
 # ===STRING OPERATIONS====================================================
 
@@ -60,7 +69,11 @@ def happy_birthday(name, age):
     >>> happy_birthday("Peter","17")
     Happy 17th birthday, Peter!
     """
-    pass
+    birthdayWish = 'Happy {}th birthday, {}!'.format(age, name)
+    print(birthdayWish)
+
+
+print((happy_birthday("Peter","17")))
 
 def word_multiplier(word, n):
     """ Return a word multiplied n times.
@@ -73,6 +86,7 @@ def word_multiplier(word, n):
     ''
     """
     pass
+
 
 def reverse(word):
     """ Return the reverse of a word.
@@ -87,6 +101,7 @@ def reverse(word):
     """
     pass
 
+
 def every_nth(word, n):
     """ Return every nth letter of w word
     >>> every_nth("Ich",2)
@@ -97,6 +112,7 @@ def every_nth(word, n):
     'Aetd'
     """
     pass
+
 
 # ===LIST OPERATIONS====================================================
 listOne = ["Germany", "Spain", "Italy", "Poland", "France"]
@@ -113,6 +129,7 @@ def second_element(list_a):
     """
     pass
 
+
 def concatenate_lists(list_a, list_b):
     """ Return the concatenation of both lists.
     >>> concatenate_lists(listOne,listTwo)
@@ -121,6 +138,7 @@ def concatenate_lists(list_a, list_b):
     [42, 3, 'Super', 'Duper']
     """
     pass
+
 
 def swap_half(list_a):
     """ Swaps the first half of a list with the second half of the list.
@@ -131,6 +149,7 @@ def swap_half(list_a):
     ['Italy', 'Poland', 'France', 'Germany', 'Spain']
     """
     pass
+
 
 def replace_elements(list_a, replacement_indices, new_value):
     """ Replace the elements in list_a at the positions given in replacement_indices with new_value, and return the
@@ -153,6 +172,7 @@ def long_strings(string_list, max_length):
     [False, True, False, True]
     """
     pass
+
 
 # ===LOOP OPERATIONS====================================================
 
