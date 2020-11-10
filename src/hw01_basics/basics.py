@@ -31,7 +31,6 @@ def hello_semester():
     print('Welcome to "Symbolische Programmierung"')
 
 
-print(hello_semester())
 
 
 def modulo(x, y):
