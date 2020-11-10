@@ -44,7 +44,7 @@ def modulo(x, y):
     0
     """
     return x % y
-    pass
+    pass ok
 
 
 def odd_number(x):
