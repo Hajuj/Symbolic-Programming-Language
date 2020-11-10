@@ -32,7 +32,7 @@ def hello_semester():
 
 
 print(hello_semester())
-fv
+
 
 def modulo(x, y):
     """ Return the value x modulo y (i.e., do NOT print it).
@@ -44,7 +44,7 @@ def modulo(x, y):
     0
     """
     return x % y
-    pass ok
+    pass
 
 
 def odd_number(x):
@@ -73,7 +73,8 @@ def happy_birthday(name, age):
     print(birthdayWish)
 
 
-print((happy_birthday("Peter","17")))
+print((happy_birthday("Peter", "17")))
+
 
 def word_multiplier(word, n):
     """ Return a word multiplied n times.
@@ -85,7 +86,13 @@ def word_multiplier(word, n):
     >>> word_multiplier('Fish', 0)
     ''
     """
-    pass
+    if n == 0:
+      print(" ")
+    else:
+      print(word * n)
+
+
+print(word_multiplier("thomas", 3))
 
 
 def reverse(word):
