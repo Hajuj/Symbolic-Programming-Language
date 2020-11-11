@@ -5,7 +5,7 @@ exercises in this course. We'll have a look at numbers, strings,
 lists, and regular expressions (=regex) in some simple exercises.
 
 The instructions to a function are given in the comment section
-within the function; the 'pass' statements are the slots that
+within the function; the '' statements are the slots that
 are to be replaced with correct code.
 You can do command-line test runs with this code by entering
 > python3 -m doctest -v hw01_basics/basics.py <
@@ -28,7 +28,6 @@ def hello_semester():
     """
 
     print("Welcome to \"Symbolische Programmierung\" WS 20/21")
-    pass
 
 
 def modulo(x, y):
@@ -42,7 +41,7 @@ def modulo(x, y):
     """
     res = x % y
     return res
-    pass
+
 
 def odd_number(x):
     """ Return True or False whether x is odd or not.
@@ -55,7 +54,6 @@ def odd_number(x):
     """
     res = x % 2 != 0
     return res
-    pass
 
 
 # ===STRING OPERATIONS====================================================
@@ -66,7 +64,6 @@ def happy_birthday(name, age):
     Happy 17th birthday, Peter!
     """
     print("Happy %sth birthday, %s!" % (age, name))
-    pass
 
 
 def word_multiplier(word, n):
@@ -80,7 +77,6 @@ def word_multiplier(word, n):
     ''
     """
     return word * n
-    pass
 
 
 def reverse(word):
@@ -95,7 +91,6 @@ def reverse(word):
     '54321'
     """
     return word[::-1]
-    pass
 
 
 def every_nth(word, n):
@@ -108,13 +103,13 @@ def every_nth(word, n):
     'Aetd'
     """
     return word[::n]
-    pass
 
 
 # ===LIST OPERATIONS====================================================
 listOne = ["Germany", "Spain", "Italy", "Poland", "France"]
 listTwo = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]
 listThree = [5, 4, 8, 6]
+
 
 
 def second_element(list_a):
@@ -124,9 +119,7 @@ def second_element(list_a):
     >>> second_element(listTwo)
     2
     """
-
     return list_a[1]
-    pass
 
 
 def concatenate_lists(list_a, list_b):
@@ -137,7 +130,6 @@ def concatenate_lists(list_a, list_b):
     [42, 3, 'Super', 'Duper']
     """
     return list_a + list_b
-    pass
 
 
 def swap_half(list_a):
@@ -148,9 +140,8 @@ def swap_half(list_a):
     >>> swap_half(listOne)
     ['Italy', 'Poland', 'France', 'Germany', 'Spain']
     """
-    index = len(list_a)//2
-    return list_a[index:]+list_a[:index]
-    pass
+    index = len(list_a) // 2
+    return list_a[index:] + list_a[:index]
 
 
 def replace_elements(list_a, replacement_indices, new_value):
@@ -161,10 +152,10 @@ def replace_elements(list_a, replacement_indices, new_value):
     >>> replace_elements(listOne.copy(),[1,2,3],"North pole")
     ['Germany', 'North pole', 'North pole', 'North pole', 'France']
     """
+    res = list_a.copy()
     for i in replacement_indices:
-        list_a[i] = new_value
-    return list_a
-    pass
+        res[i] = new_value
+    return res
 
 
 def long_strings(string_list, max_length):
@@ -176,13 +167,14 @@ def long_strings(string_list, max_length):
     >>> long_strings(["a", "bb", "", "ccc"], 1)
     [False, True, False, True]
     """
-    x=0
-    for i in string_list:
-        hi = len(i) > max_length
-        string_list[x] = hi
-        x+=1
-    return string_list
-    pass
+
+    x = 0
+    res = string_list.copy()
+    for i in res:
+        check = len(i) > max_length
+        res[x] = check
+        x += 1
+    return res
 
 
 # ===LOOP OPERATIONS====================================================
@@ -196,8 +188,7 @@ def print_squares(list_a):
     36
     """
     for i in list_a:
-        print(i**2)
-    pass
+        print(i ** 2)
 
 
 def count_to_k(k):
@@ -214,14 +205,13 @@ def count_to_k(k):
     >>> count_to_k(0)
     """
     if k <= 0:
-        i=-1
+        i = -1
         while i >= k:
             print(i)
-            i-=1
+            i -= 1
     else:
         for i in range(k):
             print(i)
-    pass
 
 
 # ===REGULAR EXPRESSIONS====================================================
@@ -244,8 +234,6 @@ def no_numbers(w):
             return False
     return True
 
-    pass
-
 
 def contains_substring(substring, string):
     """ Return True or False whether w contains a certain substring.
@@ -264,7 +252,5 @@ def contains_substring(substring, string):
     """
 
     return substring.lower() in string.lower()
-    pass
-
 
 # =======================================================
