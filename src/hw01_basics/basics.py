@@ -28,10 +28,8 @@ def hello_semester():
     >>> hello_semester()
     Welcome to "Symbolische Programmierung" WS 20/21
     """
-    print('Welcome to "Symbolische Programmierung"')
+    print('Welcome to "Symbolische Programmierung" WS 20/21')
 
-
-print(hello_semester())
 
 
 def modulo(x, y):
@@ -44,7 +42,6 @@ def modulo(x, y):
     0
     """
     return x % y
-    pass
 
 
 def odd_number(x):
@@ -59,8 +56,6 @@ def odd_number(x):
     return x % 2 != 0
 
 
-print(odd_number(4))
-
 
 # ===STRING OPERATIONS====================================================
 
@@ -73,8 +68,6 @@ def happy_birthday(name, age):
     print(birthdayWish)
 
 
-print((happy_birthday("Peter", "17")))
-
 
 def word_multiplier(word, n):
     """ Return a word multiplied n times.
@@ -86,13 +79,9 @@ def word_multiplier(word, n):
     >>> word_multiplier('Fish', 0)
     ''
     """
-    if n == 0:
-      print(" ")
-    else:
-      print(word * n)
+    return word*n
 
 
-print(word_multiplier("thomas", 3))
 
 
 def reverse(word):
@@ -106,7 +95,9 @@ def reverse(word):
     >>> reverse("12345")
     '54321'
     """
-    pass
+    esrever=word[::-1]
+    return esrever
+
 
 
 def every_nth(word, n):
@@ -118,7 +109,9 @@ def every_nth(word, n):
     >>> every_nth("Apfelstrudel",3)
     'Aetd'
     """
-    pass
+    this = word[::n]
+    return this
+
 
 
 # ===LIST OPERATIONS====================================================
@@ -134,7 +127,8 @@ def second_element(list_a):
     >>> second_element(listTwo)
     2
     """
-    pass
+    return (list_a[1])
+
 
 
 def concatenate_lists(list_a, list_b):
@@ -144,7 +138,9 @@ def concatenate_lists(list_a, list_b):
     >>> concatenate_lists([42,3],["Super","Duper"])
     [42, 3, 'Super', 'Duper']
     """
-    pass
+    alltogether = list_a+list_b
+    return alltogether
+
 
 
 def swap_half(list_a):
@@ -155,7 +151,11 @@ def swap_half(list_a):
     >>> swap_half(listOne)
     ['Italy', 'Poland', 'France', 'Germany', 'Spain']
     """
-    pass
+    medium = len(list_a)//2
+    firsthalf = list_a[:medium]
+    secondhalf = list_a[medium:]
+    return secondhalf+firsthalf
+
 
 
 def replace_elements(list_a, replacement_indices, new_value):
@@ -166,7 +166,10 @@ def replace_elements(list_a, replacement_indices, new_value):
     >>> replace_elements(listOne.copy(),[1,2,3],"North pole")
     ['Germany', 'North pole', 'North pole', 'North pole', 'France']
     """
-    pass
+    for n in replacement_indices:
+        list_a[n]=new_value
+    return list_a
+
 
 
 def long_strings(string_list, max_length):
@@ -178,7 +181,14 @@ def long_strings(string_list, max_length):
     >>> long_strings(["a", "bb", "", "ccc"], 1)
     [False, True, False, True]
     """
-    pass
+    n=0
+    finalList = string_list.copy()
+    for i in finalList:
+        ok = len(i) > max_length
+        finalList[n]= ok
+        n = n + 1
+    return finalList
+
 
 
 # ===LOOP OPERATIONS====================================================
@@ -191,6 +201,9 @@ def print_squares(list_a):
     64
     36
     """
+    for n in list_a:
+       print(n**2)
+
     pass
 
 
@@ -207,6 +220,14 @@ def count_to_k(k):
     -2
     >>> count_to_k(0)
     """
+    if k <= 0:
+        i = -1
+        while i >= k:
+            print(i)
+            i = i-1
+    else:
+        for i in range(k):
+            print(i)
     pass
 
 
@@ -215,6 +236,7 @@ def count_to_k(k):
 
 def no_numbers(w):
     """ Return True or False whether w contains no numbers
+
     >>> no_numbers("Guten Tag!")
     True
     >>> no_numbers("42 ist eine tolle Zahl")
@@ -224,6 +246,8 @@ def no_numbers(w):
     >>> no_numbers("A B C D E F G H I J K L")
     True
     """
+    hey = not any((thing.isdigit()) for thing in w)
+    return hey
     pass
 
 
@@ -242,6 +266,7 @@ def contains_substring(substring, string):
     >>> contains_substring("Salat","S a l a t")
     False
     """
+    return substring.lower() in string.lower()
     pass
 
 # =======================================================
