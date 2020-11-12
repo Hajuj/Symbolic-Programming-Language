@@ -5,7 +5,7 @@ exercises in this course. We'll have a look at numbers, strings,
 lists, and regular expressions (=regex) in some simple exercises.
 
 The instructions to a function are given in the comment section
-within the function; the 'pass' statements are the slots that
+within the function; the '' statements are the slots that
 are to be replaced with correct code.
 You can do command-line test runs with this code by entering
 > python3 -m doctest -v hw01_basics/basics.py <
@@ -21,17 +21,13 @@ Happy coding!
 
 
 # ===BASICS AND NUMBERS====================================================
-
-
 def hello_semester():
     """ Print the string 'Welcome to "Symbolische Programmierung" WS 20/21'.
     >>> hello_semester()
     Welcome to "Symbolische Programmierung" WS 20/21
     """
-    print('Welcome to "Symbolische Programmierung"')
 
-
-print(hello_semester())
+    print("Welcome to \"Symbolische Programmierung\" WS 20/21")
 
 
 def modulo(x, y):
@@ -43,8 +39,8 @@ def modulo(x, y):
     >>> modulo(70, 7)
     0
     """
-    return x % y
-    pass
+    res = x % y
+    return res
 
 
 def odd_number(x):
@@ -56,10 +52,8 @@ def odd_number(x):
     >>> odd_number(-3)
     True
     """
-    return x % 2 != 0
-
-
-print(odd_number(4))
+    res = x % 2 != 0
+    return res
 
 
 # ===STRING OPERATIONS====================================================
@@ -69,11 +63,8 @@ def happy_birthday(name, age):
     >>> happy_birthday("Peter","17")
     Happy 17th birthday, Peter!
     """
-    birthdayWish = 'Happy {}th birthday, {}!'.format(age, name)
-    print(birthdayWish)
+    print("Happy %sth birthday, %s!" % (age, name))
 
-
-print((happy_birthday("Peter","17")))
 
 def word_multiplier(word, n):
     """ Return a word multiplied n times.
@@ -85,7 +76,7 @@ def word_multiplier(word, n):
     >>> word_multiplier('Fish', 0)
     ''
     """
-    pass
+    return word * n
 
 
 def reverse(word):
@@ -99,7 +90,7 @@ def reverse(word):
     >>> reverse("12345")
     '54321'
     """
-    pass
+    return word[::-1]
 
 
 def every_nth(word, n):
@@ -111,13 +102,14 @@ def every_nth(word, n):
     >>> every_nth("Apfelstrudel",3)
     'Aetd'
     """
-    pass
+    return word[::n]
 
 
 # ===LIST OPERATIONS====================================================
 listOne = ["Germany", "Spain", "Italy", "Poland", "France"]
 listTwo = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]
 listThree = [5, 4, 8, 6]
+
 
 
 def second_element(list_a):
@@ -127,7 +119,7 @@ def second_element(list_a):
     >>> second_element(listTwo)
     2
     """
-    pass
+    return list_a[1]
 
 
 def concatenate_lists(list_a, list_b):
@@ -137,7 +129,7 @@ def concatenate_lists(list_a, list_b):
     >>> concatenate_lists([42,3],["Super","Duper"])
     [42, 3, 'Super', 'Duper']
     """
-    pass
+    return list_a + list_b
 
 
 def swap_half(list_a):
@@ -148,7 +140,8 @@ def swap_half(list_a):
     >>> swap_half(listOne)
     ['Italy', 'Poland', 'France', 'Germany', 'Spain']
     """
-    pass
+    index = len(list_a) // 2
+    return list_a[index:] + list_a[:index]
 
 
 def replace_elements(list_a, replacement_indices, new_value):
@@ -159,7 +152,10 @@ def replace_elements(list_a, replacement_indices, new_value):
     >>> replace_elements(listOne.copy(),[1,2,3],"North pole")
     ['Germany', 'North pole', 'North pole', 'North pole', 'France']
     """
-    pass
+    res = list_a.copy()
+    for i in replacement_indices:
+        res[i] = new_value
+    return res
 
 
 def long_strings(string_list, max_length):
@@ -171,7 +167,14 @@ def long_strings(string_list, max_length):
     >>> long_strings(["a", "bb", "", "ccc"], 1)
     [False, True, False, True]
     """
-    pass
+
+    x = 0
+    res = string_list.copy()
+    for i in res:
+        check = len(i) > max_length
+        res[x] = check
+        x += 1
+    return res
 
 
 # ===LOOP OPERATIONS====================================================
@@ -184,7 +187,8 @@ def print_squares(list_a):
     64
     36
     """
-    pass
+    for i in list_a:
+        print(i ** 2)
 
 
 def count_to_k(k):
@@ -200,7 +204,14 @@ def count_to_k(k):
     -2
     >>> count_to_k(0)
     """
-    pass
+    if k <= 0:
+        i = -1
+        while i >= k:
+            print(i)
+            i -= 1
+    else:
+        for i in range(k):
+            print(i)
 
 
 # ===REGULAR EXPRESSIONS====================================================
@@ -217,7 +228,11 @@ def no_numbers(w):
     >>> no_numbers("A B C D E F G H I J K L")
     True
     """
-    pass
+    num = "1234567890"
+    for i in w:
+        if i in num:
+            return False
+    return True
 
 
 def contains_substring(substring, string):
@@ -235,6 +250,7 @@ def contains_substring(substring, string):
     >>> contains_substring("Salat","S a l a t")
     False
     """
-    pass
+
+    return substring.lower() in string.lower()
 
 # =======================================================
