@@ -14,7 +14,7 @@ c) Change the withdraw function such that the minimum balance allowed
 
 d) Write a function apply_interest(self) which applies an interest
    rate of 1.5% to the current balance and call it on your objects.
-   (1 point) TODO(APPLY ON OBJECT)
+   (1 point)
 
 e) Implement the __str__ magic method and use it to print accounts.
    (1 point)
@@ -22,7 +22,7 @@ e) Implement the __str__ magic method and use it to print accounts.
 import re
 
 
-class Account(object):
+class Account:
     """ This is a class that represents a bank account
     Attributes
     ----------
@@ -46,8 +46,7 @@ class Account(object):
 
     def __init__(self, num, person):
         """
-
-
+        initializing the class
         :param num: int (the personal number of the person)
         :param person: string (the name of the person/holder)
         """
@@ -58,7 +57,7 @@ class Account(object):
     def deposit(self, amount):
         """
         Shows the balance after depositing cash to the bank account
-
+        the balance was zero but when you deposit, it increases by the amount you deposit
         :param amount: int
         :return: balance :: double
         """
@@ -78,10 +77,12 @@ class Account(object):
         self.balance -= amount
         return amount
 
+    """because the balance decreases by the amount you withdrawn"""
+
     def print_info(self):
         """
 
-        :return: Prints the balance value as a string
+        :return: Prints the current balance value
         """
         print("Balance: ", self.balance)
 
@@ -124,6 +125,39 @@ class Account(object):
         return res
 
 
+""" This is the main part of the program
+    An object is being created as an example. First we assign the attributes and then 
+    we can give different values to all the methods and functions we have created
+    in our code. By different amounts of deposited and withdrawn money, the balance will be
+    different in the end. With the setter method is also possible to change the name of the 
+    account holder.
+ """
 if __name__ == "__main__":
     print("Welcome to the Python Bank!")
+""" The objects 'a' and 'b' are being created with different attributes"""
+a = Account(420, "IDK")
+b = Account(999, "AnotherOne")
+""" in the next code lines are being different values given 
+    to the 'withdraw' and 'deposit' function, while also applying the interest"""
+a.deposit(1200)
+b.deposit(1800)
+a.withdraw(300)
+b.withdraw(420)
+a.apply_interest()
+b.apply_interest()
+a.deposit(550)
+a.deposit(870)
+b.deposit(690)
+b.withdraw(115)
+a.withdraw(1280)
+a.apply_interest()
+b.apply_interest()
+
+"""the first account holder's name is being changed from IDK to IDC
+    and the second one from AnotherOne to SpecialOne"""
+a.set_holder("IDC")
+b.set_holder("SpecialOne")
+
+print(a.__str__())
+print(b.__str__())
 
