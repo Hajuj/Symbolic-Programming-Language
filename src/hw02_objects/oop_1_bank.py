@@ -7,7 +7,7 @@ a) Using the slides & the script, put together a file containing the
 
 b) Create a main application where you create a number of accounts.
    Play around with depositing / withdrawing money.  Change the
-   account holder of an account using a setter method.  (1 point)  TODO
+   account holder of an account using a setter method.  (1 point)
 
 c) Change the withdraw function such that the minimum balance allowed
    is -1000.  (1 point)
