@@ -13,14 +13,15 @@ c) Create a department dictionary (dictionary of strings to lists/sets
    (2 points)
 
 """
+import re
 
 
 class Employee:
     # Constructor
-    def __init__(self, name, old, balance):
-        self.name = name
-        self.old = old
-        self.balance = balance
+    def __init__(self, num, person):
+        self.balance = 0
+        self.number = num
+        self.holder = person
 
     # Methods
     def withdraw(self, amount):
@@ -32,26 +33,41 @@ class Employee:
     def deposit(self, amount):
         self.balance += amount
 
+    def print_info(self):
+        print("Balance:", self.balance)
+
+    def set_holder(self, person):
+        if (not type(person) == str):
+            raise TypeError
+        if not re.match("\w+( \w+)*", person.strip()):
+            raise ValueError
+        self.holder = person
+
+    def get_holder(self):
+        return self.holder
+
     # String representation
     def __str__(self):
-        return f"Employee name: {self.name}\n" \
-               f"Old balance: {self.old}\n" \
-               f"New balance: {self.balance}\n"
+        return f"Employee application\n" \
+               f"Employee ID: {self.number}\n" \
+               f"Employee name: {self.holder}\n" \
+               f"Balance: {self.balance}\n"
 
 
 # Main part of the program
 if __name__ == "__main__":
     # Creating Objects & assigning attributes
-    emp1 = Employee("HJJ", 69, 69)
-    emp1.deposit(500)
-    emp1.withdraw(200)
-    emp2 = Employee("Shady", 20, 20)
-    emp2.deposit(600)
-    emp2.withdraw(200)
+    hjjEmp = Employee(69, "HJJ")
+    hjjEmp.deposit(500)
+    hjjEmp.withdraw(200)
+    hjjEmp.set_holder("bro")
+    shadyEmp = Employee(420, "Shady")
+    shadyEmp.deposit(600)
+    shadyEmp.withdraw(400)
+    shadyEmp.set_holder("idk")
     # Accessing attributes
-    print("Employee application")
-    print(emp1)
-    print(emp2)
+    print(hjjEmp)
+    print(shadyEmp)
 
 # Dictionary
 dep = {
