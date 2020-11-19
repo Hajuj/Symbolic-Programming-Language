@@ -35,10 +35,12 @@ class Employee:
 
     # string representation of the employees
     def __str__(self):
-        info = "*Employee Info*\n"
+        info = "*Employee Info* \n"
         info += "First Name is: " + self.firstName + ".\n"
         info += "Last Name is: " + self.lastName + ".\n"
         info += "ID Number is: " + str(self.personalNumber) + ".\n"
+        info += "This employee has worked: " + str(self.workingHours) + " hours.\n"
+        info += "The salary of this employee: " + str(self.salary) + "\n"
         return info
 
     # Setting a new ID Number
@@ -60,24 +62,27 @@ some of the information is being changed, using methods
 """
 
 if __name__ == "__main__":
-    print("Employee application")
+    print("Employee application \n")
     employee1 = Employee("Rajna", "Fani", 666, 60, 1200)
     employee2 = Employee("Shady", "Mansour", 777, 65, 1300)
     employee3 = Employee("Hajuj", "Hazhuzh", 888, 62.5, 1250)
 
 # changing the personal number and the amount of working hours for employee1
     print(employee1)
+    print ("After some changes: ")
     employee1.set_idnumber(888)
-    employee1.set_workinghours(1300)
+    employee1.set_workinghours(65)
     print(employee1)
 
 # changing the amount of working hours for employee2
     print(employee2)
-    employee2.set_workinghours(1200)
+    print ("After some changes: ")
+    employee2.set_workinghours(60)
     print(employee2)
 
 # changing the personal number for employee3
     print(employee3)
+    print ("After some changes: ")
     employee3.set_idnumber(666)
     print(employee3)
 
