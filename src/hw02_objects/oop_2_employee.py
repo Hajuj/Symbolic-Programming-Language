@@ -55,8 +55,8 @@ class Employee:
         self.workingHours = hours
 
     # Setting new salary
-    def set_salary(self, salary):
-        self.salary = salary
+    def set_salary(self, newSalary):
+        self.salary = newSalary
 
 
 """Main part of the program
