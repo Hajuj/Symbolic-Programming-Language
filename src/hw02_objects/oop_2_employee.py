@@ -66,6 +66,7 @@ if __name__ == "__main__":
     employee1 = Employee("Rajna", "Fani", 666, 60, 1200)
     employee2 = Employee("Shady", "Mansour", 777, 65, 1300)
     employee3 = Employee("Hajuj", "Hazhuzh", 888, 62.5, 1250)
+    Employee.employees_info()
 
 # changing the personal number and the amount of working hours for employee1
     print(employee1)
