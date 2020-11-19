@@ -43,6 +43,7 @@ def modulo(x, y):
     return res
 
 
+
 def odd_number(x):
     """ Return True or False whether x is odd or not.
     >>> odd_number(15)
@@ -56,6 +57,7 @@ def odd_number(x):
     return res
 
 
+
 # ===STRING OPERATIONS====================================================
 
 def happy_birthday(name, age):
@@ -64,6 +66,7 @@ def happy_birthday(name, age):
     Happy 17th birthday, Peter!
     """
     print("Happy %sth birthday, %s!" % (age, name))
+
 
 
 def word_multiplier(word, n):
@@ -77,6 +80,7 @@ def word_multiplier(word, n):
     ''
     """
     return word * n
+
 
 
 def reverse(word):
@@ -93,6 +97,7 @@ def reverse(word):
     return word[::-1]
 
 
+
 def every_nth(word, n):
     """ Return every nth letter of w word
     >>> every_nth("Ich",2)
@@ -103,6 +108,7 @@ def every_nth(word, n):
     'Aetd'
     """
     return word[::n]
+
 
 
 # ===LIST OPERATIONS====================================================
@@ -122,6 +128,7 @@ def second_element(list_a):
     return list_a[1]
 
 
+
 def concatenate_lists(list_a, list_b):
     """ Return the concatenation of both lists.
     >>> concatenate_lists(listOne,listTwo)
@@ -130,6 +137,7 @@ def concatenate_lists(list_a, list_b):
     [42, 3, 'Super', 'Duper']
     """
     return list_a + list_b
+
 
 
 def swap_half(list_a):
@@ -142,6 +150,7 @@ def swap_half(list_a):
     """
     index = len(list_a) // 2
     return list_a[index:] + list_a[:index]
+
 
 
 def replace_elements(list_a, replacement_indices, new_value):
@@ -178,6 +187,7 @@ def long_strings(string_list, max_length):
 
 
 # ===LOOP OPERATIONS====================================================
+
 
 def print_squares(list_a):
     """ Print the square values of each element in the list. You can use a for-loop for this problem.
