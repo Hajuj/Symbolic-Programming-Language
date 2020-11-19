@@ -16,30 +16,38 @@ c) Create a department dictionary (dictionary of strings to lists/sets
 
 
 class Employee:
-    def __init__(self, name, money):
+    # Constructor
+    def __init__(self, name, old, balance):
         self.name = name
-        self.money = money
+        self.old = old
+        self.balance = balance
 
     # Methods
-    def money_lost(self, amount):
-        self.money -= amount
+    def withdraw(self, amount):
+        if amount > self.balance:
+            amount = self.balance
+        self.balance -= amount
+        return amount
 
-    def money_won(self, amount):
-        self.money += amount
+    def deposit(self, amount):
+        self.balance += amount
 
+    # String representation
     def __str__(self):
         return f"Employee name: {self.name}\n" \
-               f"New balance: {self.money}\n"
+               f"Old balance: {self.old}\n" \
+               f"New balance: {self.balance}\n"
 
 
+# Main part of the program
 if __name__ == "__main__":
     # Creating Objects & assigning attributes
-    emp1 = Employee("HJJ", 69)
-    emp1.money_won(500)
-    emp1.money_lost(200)
-    emp2 = Employee("Shady", 20)
-    emp2.money_won(600)
-    emp2.money_lost(200)
+    emp1 = Employee("HJJ", 69, 69)
+    emp1.deposit(500)
+    emp1.withdraw(200)
+    emp2 = Employee("Shady", 20, 20)
+    emp2.deposit(600)
+    emp2.withdraw(200)
     # Accessing attributes
     print("Employee application")
     print(emp1)
