@@ -31,16 +31,16 @@ class Employee:
     # prints information about the number of employees in the company
     @staticmethod
     def employees_info():
-        print("Total number of employees in our company is: %d " % Employee.count_employees)
+        print("Total number of employees in our company is: %d\n" % Employee.count_employees)
 
     # string representation of the employees
     def __str__(self):
-        info = "*Employee Info* \n"
+        info = "*Employee Info*\n"
         info += "First Name is: " + self.firstName + ".\n"
         info += "Last Name is: " + self.lastName + ".\n"
         info += "ID Number is: " + str(self.personalNumber) + ".\n"
         info += "This employee has worked: " + str(self.workingHours) + " hours.\n"
-        info += "The salary of this employee: " + str(self.salary) + "\n"
+        info += "The salary of this employee is: " + str(self.salary) + " Euros.\n"
         return info
 
     # Setting a new ID Number
@@ -54,6 +54,10 @@ class Employee:
     def set_workinghours(self, hours):
         self.workingHours = hours
 
+    # Setting new salary
+    def set_salary(self, salary):
+        self.salary = salary
+
 
 """Main part of the program
 Creating employee objects and assigning attributes
@@ -62,31 +66,34 @@ some of the information is being changed, using methods
 """
 
 if __name__ == "__main__":
-    print("Employee application \n")
+    print("Employee application")
     employee1 = Employee("Rajna", "Fani", 666, 60, 1200)
     employee2 = Employee("Shady", "Mansour", 777, 65, 1300)
     employee3 = Employee("Hajuj", "Hazhuzh", 888, 62.5, 1250)
+    Employee.employees_info()
 
 # changing the personal number and the amount of working hours for employee1
     print(employee1)
-    print ("After some changes: ")
+    print("After some changes:")
     employee1.set_idnumber(888)
     employee1.set_workinghours(65)
+    employee1.set_salary(1400)
     print(employee1)
 
 # changing the amount of working hours for employee2
     print(employee2)
-    print ("After some changes: ")
+    print("After some changes")
     employee2.set_workinghours(60)
+    employee2.set_salary(1100)
     print(employee2)
 
 # changing the personal number for employee3
     print(employee3)
-    print ("After some changes: ")
+    print("After some changes")
     employee3.set_idnumber(666)
     print(employee3)
 
-# Creating a dictionary with two different departments
+    # Creating a dictionary with two different departments
 dep = {
     "dep1": "Accounting",
     "dep2": "Sales"
@@ -98,6 +105,5 @@ emp = {
     "emp3": "Rajna",
     "emp4": "Naira"
 }
-
 print(dep["dep1"] + ": " + emp["emp1"] + "\n" + dep["dep1"] + ": " + emp["emp2"])
 print(dep["dep2"] + ": " + emp["emp3"] + "\n" + dep["dep2"] + ": " + emp["emp4"])
