@@ -1,6 +1,11 @@
+
+from nltk import word_tokenize
+
+
 def normalized_tokens(text):
     """ This takes a string and returns lower-case tokens, using nltk for tokenization. """
-    pass # TODO: return list with lower-case tokens.
+    tokens = word_tokenize(text.toLower())
+    return tokens
 
 class TextDocument:
     def __init__(self, text, id=None):
