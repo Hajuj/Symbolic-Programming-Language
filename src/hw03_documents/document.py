@@ -1,6 +1,7 @@
+import nltk
 
-from nltk import word_tokenize
-
+def word_tokenize(text):
+    return nltk.word_tokenize(text)
 
 def normalized_tokens(text):
     """ This takes a string and returns lower-case tokens, using nltk for tokenization. """
@@ -24,6 +25,8 @@ class TextDocument:
         """ This returns a short string representation, which is at most 25 characters long.
         If the original text is longer than 25 characters, the last 3 characters of the short string should be '...'.
         """
+
+        result = ' '
         pass # TODO: Implement correct return statement.
 
     def word_overlap(self, other_doc):
