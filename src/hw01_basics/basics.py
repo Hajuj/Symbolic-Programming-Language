@@ -43,7 +43,6 @@ def modulo(x, y):
     return res
 
 
-
 def odd_number(x):
     """ Return True or False whether x is odd or not.
     >>> odd_number(15)
@@ -68,7 +67,6 @@ def happy_birthday(name, age):
     print("Happy %sth birthday, %s!" % (age, name))
 
 
-
 def word_multiplier(word, n):
     """ Return a word multiplied n times.
 
@@ -80,7 +78,6 @@ def word_multiplier(word, n):
     ''
     """
     return word * n
-
 
 
 def reverse(word):
@@ -97,7 +94,6 @@ def reverse(word):
     return word[::-1]
 
 
-
 def every_nth(word, n):
     """ Return every nth letter of w word
     >>> every_nth("Ich",2)
@@ -108,7 +104,6 @@ def every_nth(word, n):
     'Aetd'
     """
     return word[::n]
-
 
 
 # ===LIST OPERATIONS====================================================
@@ -128,7 +123,6 @@ def second_element(list_a):
     return list_a[1]
 
 
-
 def concatenate_lists(list_a, list_b):
     """ Return the concatenation of both lists.
     >>> concatenate_lists(listOne,listTwo)
@@ -137,7 +131,6 @@ def concatenate_lists(list_a, list_b):
     [42, 3, 'Super', 'Duper']
     """
     return list_a + list_b
-
 
 
 def swap_half(list_a):
@@ -150,7 +143,6 @@ def swap_half(list_a):
     """
     index = len(list_a) // 2
     return list_a[index:] + list_a[:index]
-
 
 
 def replace_elements(list_a, replacement_indices, new_value):

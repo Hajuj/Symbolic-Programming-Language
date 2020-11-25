@@ -3,7 +3,7 @@ from nltk import word_tokenize
 
 def normalized_tokens(text):
     """ This takes a string and returns lower-case tokens, using nltk for tokenization. """
-    tokens = word_tokenize(text.toLower())
+    tokens = word_tokenize(text.lower())
     return tokens
 
 
