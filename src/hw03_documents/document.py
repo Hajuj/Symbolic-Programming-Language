@@ -8,11 +8,21 @@ def normalized_tokens(text):
     tokens = word_tokenize(text.toLower())
     return tokens
 
+def wordCount(text):
+    ourText = word_tokenize(text)
+    sth = {}
+    for word in ourText:
+        if word in sth:
+            sth[word] += 1
+        else:
+            sth[word] = 0
+    return sth
+
 class TextDocument:
     def __init__(self, text, id=None):
         """ This creates a TextDocument instance with a string, a dictionary and an identifier. """
         self.text = text
-        self.word_to_count = None # TODO: Create dictionary that maps words to their counts.
+        self.word_to_count = wordCount(text)
         self.id = id
 
     @classmethod
