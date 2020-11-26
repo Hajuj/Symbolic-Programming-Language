@@ -1,33 +1,35 @@
 import nltk
 
-def word_tokenize(text):
-    return nltk.word_tokenize(text)
+
 
 def normalized_tokens(text):
     """ This takes a string and returns lower-case tokens, using nltk for tokenization. """
-    tokens = word_tokenize(text.lower())
+    tokens = nltk.word_tokenize(text.lower())
     return tokens
 
-def wordCount(text):
-    ourText = word_tokenize(text)
-    sth = {}
-    for word in ourText:
-        if word in sth:
-            sth[word] += 1
+
+def countWords(text):
+    tokens = normalized_tokens(text)
+    dic = dict()
+    for token in tokens:
+        if token in dic:
+            dic[token] += 1
         else:
-            sth[word] = 1
-    return sth
+            dic[token] = 1
+    return dic
+
 
 class TextDocument:
     def __init__(self, text, id=None):
         """ This creates a TextDocument instance with a string, a dictionary and an identifier. """
         self.text = text
-        self.word_to_count = wordCount(text)
+        self.word_to_count = countWords(text)
         self.id = id
 
     @classmethod
     def from_file(cls, filename):
         """ This creates a TextDocument instance by reading a file. """
+
         text = open(filename, "r").read()
         return cls(text, filename)
 
@@ -36,29 +38,18 @@ class TextDocument:
         If the original text is longer than 25 characters, the last 3 characters of the short string should be '...'.
         """
 
-        result = ' '
-        string = open(self, "r").read()
-        if len(string) >= 25:
-            string = string[::23] + "..."
+        string = self.text
+        if len(string) > 25:
+            string = string[:22] + "..."
         return string
 
-    from_file("example_document1.txt").__str__()
 
-
-def word_overlap(self, other_doc):
+    def word_overlap(self, other_doc):
         """ This returns the number of words that occur in both documents (self and other_doc) at the same time.
         Every word should be considered only once, irrespective of how often it occurs in either document (i.e. we
         consider word *types*).
         """
         num = 0
-        tokens1 = normalized_tokens(self)
-        tokens2 = normalized_tokens(other_doc)
-        i = 0
-
-        for token in tokens1:
-            if token == tokens2[i]:
-                num += 1
-            i += 1
-
-        return num
-
+        tokens1 = normalized_tokens(self.text)
+        tokens2 = normalized_tokens(other_doc.text)
+        return len(set(tokens2) & set(tokens1))
