@@ -1,7 +1,6 @@
 from unittest import TestCase
 from hw03_documents.document import TextDocument, normalized_tokens
 
-
 class TextDocumentTest(TestCase):
     def setUp(self):
         self.text_id1 = ("the fat cat sat on a mat", "doc1")
@@ -17,10 +16,10 @@ class TextDocumentTest(TestCase):
 
     def testConstructor(self):
         doc1 = TextDocument(self.text_id1[0], self.text_id1[1])
-        expected_dict1 = {"the": 1, "fat": 1, "cat": 1, "sat": 1, "on": 1, "a": 1, "mat": 1}
+        expected_dict1 = {"the":1, "fat": 1, "cat":1, "sat":1, "on":1, "a":1, "mat":1}
         self.assertEqual(doc1.word_to_count, expected_dict1)
         doc2 = TextDocument(self.text_id2[0], self.text_id2[1])
-        expected_dict2 = {"a": 2, "rose": 2, "is": 1}
+        expected_dict2 = {"a":2, "rose":2, "is":1}
         self.assertEqual(doc2.word_to_count, expected_dict2)
 
     def testFromFileMethod(self):
@@ -51,3 +50,6 @@ class TextDocumentTest(TestCase):
         self.assertEqual(doc_1.word_overlap(doc_2), 1)
         self.assertEqual(doc_2.word_overlap(doc_3), 2)
         self.assertEqual(doc_1.word_overlap(doc_3), 2)
+
+
+
