@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.hw03_documents.document import TextDocument, normalized_tokens
+from hw03_documents.document import TextDocument, normalized_tokens
 
 
 class TextDocumentTest(TestCase):
