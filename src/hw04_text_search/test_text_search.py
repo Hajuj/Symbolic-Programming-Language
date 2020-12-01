@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from hw04_text_search.text_vectors import TextDocument, DocumentCollection
+from src.hw04_text_search.text_vectors import TextDocument, DocumentCollection
 
 
 class DocumentCollectionTest(TestCase):
