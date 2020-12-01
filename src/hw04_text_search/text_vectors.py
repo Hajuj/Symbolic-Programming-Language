@@ -21,7 +21,7 @@ def dot(dictA, dictB):
     >>> dot({},{})
     0
         """
-    return sum ([dictA.get(tok) * dictB.get(tok, 0) for tok in dictA])
+    return sum([dictA.get(tok) * dictB.get(tok, 0) for tok in dictA])
 
 
 def normalized_tokens(text):
