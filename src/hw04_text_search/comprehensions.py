@@ -22,7 +22,7 @@ def div_less(set1):
     Return a new set only containing numbers that can`t be divided by any other number (except itself)
     from the original set.
     """
-    return set1 - {x for x in set1 for y in set1 if x % y == 0 and x != y }
+    return set1 - {x for x in set1 for y in set1 if x % y == 0 and x != y}
 
 
 def map_zip(list1, list2):

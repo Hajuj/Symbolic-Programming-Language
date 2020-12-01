@@ -167,7 +167,10 @@ class DocumentCollection:
         dotAB = dot(weightedA, weightedB)
         normA = math.sqrt(dot(weightedA, weightedA))
         normB = math.sqrt(dot(weightedB, weightedB))
-        return dotAB / (normA * normB)
+        if (normA * normB) == 0:
+            return 0
+        else:
+            return dotAB / (normA * normB)
 
 
 # TODO: Docstring documentation for all member functions (including constructors) Ex.3.2
