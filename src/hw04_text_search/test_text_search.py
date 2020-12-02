@@ -28,9 +28,42 @@ class DocumentCollectionTest(TestCase):
 
 class TextDocumentTest(TestCase):
     # TODO: Unittests for TextDocument go here.
-    pass
+    def setUp(self):
+        self.text_id1 = ("the nice boy ate a chocolate bar", "doc1")
+        self.text_id2 = ("", "doc2")
+        self.text_id3 = ("a dog is not a dog", "doc3")
+
+    def testConstructor(self):
+        doc1 = TextDocument(self.text_id1[0], self.text_id1[1])
+        expected_dict1 = {"the":1, "nice":1, "boy": 1, "ate":1, "a":1, "chocolate":1, "bar":1}
+        self.assertEqual(doc1.token_counts, expected_dict1)
+        doc2 = TextDocument(self.text_id2[0], self.text_id2[1])
+        expected_dict2 = {None}
+        self.assertEqual(doc2.token_counts, expected_dict2)
+
+
+    def testFromFileMethod(self):
+        doc1 = TextDocument.from_file("./hw04_text_search/test1.txt")
+        token_set = set(doc1.token_counts.keys())
+        expected_token_set = {'trump', 'will', 'not', 'be', 'the', 'u.s.', 'president',
+                              "anymore", '.', "(", ")"}
+        self.assertEqual(token_set, expected_token_set)
+
+        doc2 = TextDocument.from_file("./hw04_text_search/test2.txt")
+        self.assertEqual(doc2.token_counts["app"], 2)
+        self.assertTrue("terminal" in doc2.token_counts)
 
 
 class SearchEngineTest(TestCase):
     # TODO: Unittests for SearchEngine go here.
-    pass
+
+    def testConstructor(self):
+
+        pass
+
+    def testRankedDocuments(self):
+
+        pass
+
+    def testSnippets(self):
+        pass

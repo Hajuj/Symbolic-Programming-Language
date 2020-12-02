@@ -50,7 +50,7 @@ class TextDocument:
 
     """
 
-    def __init__(self, text, id=None):
+    def __init__(self, text, id=None):  #Dict should be {None} if text is empty
         """ Here will be implemented the constructor for the TextDocument class.
       There will also be stored a dictionary with the frequency of the tokens for the text (self.token_counts)
       :param: text: string -> the text for the TextDocument-Object
@@ -58,11 +58,15 @@ class TextDocument:
 
           """
         self.text = text
-        self.token_counts = FreqDist(normalized_tokens(text))
+
+        if text is "":
+            self.token_counts = {None}
+        else:
+            self.token_counts = FreqDist(normalized_tokens(text))
         self.id = id
 
     @classmethod
-    def from_file(cls, filename):
+    def from_file(cls, filename): #surrounds each word with ()
         """ Creates a TextDocument object from a file by first opening the textfile
         in read only mode, removing the whitespace characters and then calling the
         constructor with the given text and ID attributes
@@ -72,8 +76,13 @@ class TextDocument:
 
         """
         with open(filename, 'r') as myfile:
-            text = myfile.read().strip()
-        return cls(text, filename)
+            text = myfile.read().strip().split()
+
+            new_text = ""
+            for word in text:
+                new_text += "(" + word + ")"
+
+        return cls(new_text, filename)
 
 
 # TODO: Docstring documentation for all member functions (including constructors) Ex.3.2
@@ -84,10 +93,11 @@ class DocumentCollection:
     Methods and functions
     ---------------------
     """
+
     def __init__(self, term_to_df, term_to_docids, docid_to_doc):
         """
-        here will be implemented the constructor of the class which helps
-        collecting and mapping certain useful informations.
+        the class constructor will be implemented here which helps
+        collecting and mapping certain useful information.
 
         :param term_to_df: a dictionary that maps terms from documents to the amount of documents they appear in
         :param term_to_docids: a dictionary that maps each term to a set of all documents they appear in
@@ -178,7 +188,7 @@ class SearchEngine:
     def __init__(self, doc_collection):
         """
         this is a constructor for the SearchEngine class, which creates an instance of the class for a DocumentCollection
-        :param doc_collection: the parameter of the DocumentCollection on which the SearchEngie should operate on
+        :param doc_collection: the parameter of the DocumentCollection on which the SearchEngine should operate on
         """
         self.doc_collection = doc_collection
 
@@ -199,7 +209,7 @@ class SearchEngine:
         searches a DocumentCollection for text-snippets containing tokens from a query
         :param query: tokens string for the search
         :param document: the document the text-snippets should be extracted from
-        :param window: the number of Characters before and sfter the tokens found in the document for the text-snippet
+        :param window: the number of Characters before and after the tokens found in the document for the text-snippet
         :return:
         """
         tokens = normalized_tokens(query)

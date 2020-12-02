@@ -1,0 +1,1 @@
+Many users may think that the Terminal app on your Mac is only for programmers or for people who love coding. Although that’s true and the app does allow you to execute various commands, it can be used for basic tasks like copying file paths as well.
