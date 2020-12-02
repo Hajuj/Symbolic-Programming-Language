@@ -16,7 +16,7 @@ class TextDocumentTest(TestCase):
 
     def testConstructor(self):
         doc1 = TextDocument(self.text_id1[0], self.text_id1[1])
-        expected_dict1 = {"the":1, "fat": 1, "cat":1, "sat":1, "on":1, "a":1, "mat":1}
+        expected_dict1 = {"the": 1, "fat": 1, "cat": 1, "sat": 1, "on": 1, "a": 1, "mat": 1}
         self.assertEqual(doc1.word_to_count, expected_dict1)
         doc2 = TextDocument(self.text_id2[0], self.text_id2[1])
         expected_dict2 = {"a":2, "rose":2, "is":1}

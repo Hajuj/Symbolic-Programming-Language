@@ -59,7 +59,7 @@ class TextDocument:
           """
         self.text = text
 
-        if text is "":
+        if text == "":
             self.token_counts = {None}
         else:
             self.token_counts = FreqDist(normalized_tokens(text))
