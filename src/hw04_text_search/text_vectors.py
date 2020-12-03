@@ -42,23 +42,20 @@ class TextDocument:
     Attributes
     ---------
     text: string -> the text for the TextDocument-Object
-    id : string -> beliebige ID für den TextDocument-Object
+    id : string -> random ID for the TextDocument-Object
 
     Methods and functions
     ---------------------
     from_file(cls, filename): a method that creates a TextDocument object from a file
-
     """
 
-    def __init__(self, text, id=None):  #Dict should be {None} if text is empty
+    def __init__(self, text, id=None):  # Dict should be {None} if text is empty
         """ Here will be implemented the constructor for the TextDocument class.
       There will also be stored a dictionary with the frequency of the tokens for the text (self.token_counts)
       :param: text: string -> the text for the TextDocument-Object
-      :param: id : string -> beliebige ID für den TextDocument-Object
-
+      :param: id : string -> random ID for the TextDocument-Object
           """
         self.text = text
-
         if text is "":
             self.token_counts = {None}
         else:
@@ -66,14 +63,11 @@ class TextDocument:
         self.id = id
 
     @classmethod
-    def from_file(cls, filename): #surrounds each word with ()
-        """ Creates a TextDocument object from a file by first opening the textfile
+    def from_file(cls, filename):  # surrounds each word with ()
+        """ Creates a TextDocument object from a file by first opening the text file
         in read only mode, removing the whitespace characters and then calling the
         constructor with the given text and ID attributes
-
         :param: filename -> gives information about the path of the file that will be imported
-
-
         """
         with open(filename, 'r') as myfile:
             text = myfile.read().strip().split()
@@ -185,6 +179,11 @@ class DocumentCollection:
 
 # TODO: Docstring documentation for all member functions (including constructors) Ex.3.2
 class SearchEngine:
+    docs = [TextDocument(text[0], text[1]) for text in
+            [("This document is way different than the other documents!\n"
+              "Because it's a really nice document!\nThanks:)", "doc1")]]
+    collection = DocumentCollection.from_document_list(docs)
+
     def __init__(self, doc_collection):
         """
         this is a constructor for the SearchEngine class, which creates an instance of the class for a DocumentCollection
@@ -214,6 +213,7 @@ class SearchEngine:
         """
         tokens = normalized_tokens(query)
         text = document.text
+        text = text.replace("\n", " ")
         for token in tokens:
             start = text.lower().find(token.lower())
             if -1 == start:
