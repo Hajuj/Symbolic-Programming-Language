@@ -119,8 +119,14 @@ class DocumentCollection:
         :param file_suffix: the file suffix of the document files
         :return:
         """
-        files = [(dir + "/" + f) for f in os.listdir(dir) if f.endswith(file_suffix)]
-        docs = [TextDocument.from_file(f) for f in files]
+        #searching all subdirectories
+        search_files = list()
+        for root, dirs, files in os.walk(dir):
+            for file in files:
+                if file.endswith(file_suffix):
+                    search_files.append(os.path.join(root, file))
+
+        docs = [TextDocument.from_file(f) for f in search_files]
         return cls.from_document_list(docs)
 
     @classmethod
@@ -185,6 +191,11 @@ class DocumentCollection:
 
 # TODO: Docstring documentation for all member functions (including constructors) Ex.3.2
 class SearchEngine:
+    docs = [TextDocument(text[0], text[1]) for text in
+            [("This document is way different than the other documents!\n"
+              "Because it's a really nice document!\nThanks:)", "doc1")]]
+    collection = DocumentCollection.from_document_list(docs)
+
     def __init__(self, doc_collection):
         """
         this is a constructor for the SearchEngine class, which creates an instance of the class for a DocumentCollection

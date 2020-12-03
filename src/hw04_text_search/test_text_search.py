@@ -57,8 +57,22 @@ class SearchEngineTest(TestCase):
     def setUp(self):
         self.fun = SearchEngine(SearchEngine.collection)
 
+        self.collection = DocumentCollection.from_dir("./hw04_text_search/enron", ".txt")
+        self.search_engine = SearchEngine(self.collection)
+
+    def test_ranked_documents(self):
+        #edited from_dir() to search all subdirectories
+        search_query = "cage ranch"
+        results = (self.search_engine.ranked_documents(search_query))
+        expected_doc_id = "./hw04_text_search/enron/enron1/ham/0066.1999-12-27.farmer.ham.txt"
+        ids = []
+
+        for res in results:
+            ids.append(str(res[0].id))
+        self.assertTrue(expected_doc_id in ids)
+
     def test_line_breaks(self):
-        for snippet in self.fun.snippets("document", SearchEngine.collection.docid_to_doc["doc1"]):
+        for snippet in self.fun.snippets("document", SearchEngine.doc_collection.docid_to_doc["doc1"]):
             self.assertTrue("\n" not in snippet)
 
     def test_query_multiple(self):

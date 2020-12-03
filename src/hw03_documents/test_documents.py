@@ -25,7 +25,7 @@ class TextDocumentTest(TestCase):
     def testFromFileMethod(self):
         doc1 = TextDocument.from_file("./hw03_documents/example_document1.txt")
         token_set = set(doc1.word_to_count.keys())
-        expected_token_set = {'dr.', 'strangelove', 'is', 'the', 'u.s.', 'president', \
+        expected_token_set = {'dr.', 'strangelove', 'is', 'the', 'u.s.', 'president',
                               "'s", 'advisor', '.'}
         self.assertEqual(token_set, expected_token_set)
 
