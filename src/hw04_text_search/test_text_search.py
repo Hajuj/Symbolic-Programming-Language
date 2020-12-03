@@ -1,10 +1,9 @@
 from unittest import TestCase
 
-from src.hw04_text_search.text_vectors import TextDocument, DocumentCollection
+from src.hw04_text_search.text_vectors import TextDocument, DocumentCollection, SearchEngine
 
 
 class DocumentCollectionTest(TestCase):
-
     def setUp(self):
         test_doc_list = [TextDocument(text_and_id[0], text_and_id[1]) for text_and_id in
                          [("the cat sat on a mat", "doc1"),
@@ -33,16 +32,15 @@ class TextDocumentTest(TestCase):
         self.text_id2 = ("", "doc2")
         self.text_id3 = ("a dog is not a dog", "doc3")
 
-    def testConstructor(self):
+    def test_constructor(self):
         doc1 = TextDocument(self.text_id1[0], self.text_id1[1])
-        expected_dict1 = {"the":1, "nice":1, "boy": 1, "ate":1, "a":1, "chocolate":1, "bar":1}
+        expected_dict1 = {"the": 1, "nice": 1, "boy": 1, "ate": 1, "a": 1, "chocolate": 1, "bar": 1}
         self.assertEqual(doc1.token_counts, expected_dict1)
         doc2 = TextDocument(self.text_id2[0], self.text_id2[1])
         expected_dict2 = {None}
         self.assertEqual(doc2.token_counts, expected_dict2)
 
-
-    def testFromFileMethod(self):
+    def test_from_file_method(self):
         doc1 = TextDocument.from_file("./hw04_text_search/test1.txt")
         token_set = set(doc1.token_counts.keys())
         expected_token_set = {'trump', 'will', 'not', 'be', 'the', 'u.s.', 'president',
@@ -56,14 +54,16 @@ class TextDocumentTest(TestCase):
 
 class SearchEngineTest(TestCase):
     # TODO: Unittests for SearchEngine go here.
+    def setUp(self):
+        self.fun = SearchEngine(SearchEngine.collection)
 
-    def testConstructor(self):
+    def test_line_breaks(self):
+        for snippet in self.fun.snippets("document", SearchEngine.collection.docid_to_doc["doc1"]):
+            self.assertTrue("\n" not in snippet)
 
-        pass
-
-    def testRankedDocuments(self):
-
-        pass
-
-    def testSnippets(self):
-        pass
+    def test_query_multiple(self):
+        for snippet in self.fun.snippets("document", SearchEngine.collection.docid_to_doc["doc1"]):
+            self.string1 = [snippet]
+        for snippet in self.fun.snippets("document document", SearchEngine.collection.docid_to_doc["doc1"]):
+            self.string2 = [snippet]
+        self.assertEqual(self.string1, self.string2)
