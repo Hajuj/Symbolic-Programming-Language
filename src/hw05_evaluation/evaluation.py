@@ -48,6 +48,7 @@ def recall(k, classes):
 
 
 def f1(k, classes):
+    # F1 = 2 * ((precision*recall)/(presicison + recall))
     """ Calculate the F1-measure of class `k` for the classifications in `classes`.
     Each element in classes is a tuple.  The first element in the tuple specifies
     the calssification of the classifier.  The second element specifies the real
@@ -59,7 +60,7 @@ def f1(k, classes):
     >>> round(f1('spam', []), 4)
     0.0
     """
-    pass
+
 
 
 class RelFreq:
@@ -103,8 +104,18 @@ class RelFreq:
         >>> round(RelFreq([], []).get_rel_freq_ham('deadline'), 4)
         0.0
         """
+        if not self.ham:
+            return 0.0
+        total = len(self.ham)
+        count = 0
 
-    pass
+        if self.ham:
+            for entry in self.ham:
+                if entry == word:
+                    count += 1
+
+        return count/total
+
 
     def get_rel_freq_spam(self, word):
         """Returns the relative frequency for `word` given spam. [1 point]
@@ -116,4 +127,14 @@ class RelFreq:
         0.0
         """
 
-    pass
+        if not self.spam:
+            return 0.0
+        total = len(self.spam)
+        count = 0
+
+        if self.spam:
+            for entry in self.spam:
+                if entry == word:
+                    count += 1
+
+        return count/total
