@@ -1,0 +1,8 @@
+evaluation.precision             FAILED    0/2 points (Funktion N/A oder Syntaxfehler)
+evaluation.recall                OK        2/2 points
+evaluation.f1                    OK        1/1 points
+evaluation.get_rel_freq          OK        1/1 points
+evaluation.get_rel_freq_ham      OK        1/1 points
+evaluation.get_rel_freq_spam     OK        1/1 points
+####################################
+TOTAL: 6/8 points
