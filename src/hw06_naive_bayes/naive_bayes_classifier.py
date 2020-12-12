@@ -15,10 +15,15 @@ class DataInstance:
     @classmethod
     def from_list_of_feature_occurrences(cls, feature_list, label):
         """ Creates feature counts for all features in the list."""
+
         feature_counts = dict()
-        # TODO: Exercise 1: Create a dictionary that contains for each feature in the list the count how often it occurs.
-        # (Use your solution from the previous exercise sheet)
-        # ODOT
+
+        for word in feature_list:
+            if word in feature_counts:
+                feature_counts[word] += 1
+            else:
+                feature_counts[word] = 1
+
         return cls(feature_counts, label)
 
     @classmethod
@@ -26,6 +31,8 @@ class DataInstance:
         with open(filename, 'r') as myfile:
             token_list = normalized_tokens(myfile.read().strip())
         return cls.from_list_of_feature_occurrences(token_list, label)
+
+
 
 class Dataset:
     def __init__(self, instance_list):
@@ -60,9 +67,10 @@ class NaiveBayesClassifier:
         category_to_num_instances = defaultdict(int) # maps a category name to the number of instances in that category
         vocabsize = len(dataset.feature_set)
         for inst in dataset.instance_list:
-            # TODO: Exercise 2.
-            pass
-            # ODOT
+            for word in inst.feature_counts:
+                word_and_category_to_count[(word, inst.label)] += inst.feature_counts[word]
+            category_to_num_instances[inst.label]+=1
+
         return cls(word_and_category_to_count, category_to_num_instances, vocabsize, smoothing)
 
     def log_probability(self, word, category):
@@ -94,8 +102,14 @@ class NaiveBayesClassifier:
         """ Predicts a category according of the log-odds of the feature counts of this label.
         feature_counts is a dict (str -> int)."""
         best_category = None
-        # TODO: Exercise 3.
-        # ODOT
+        cat_score = {}
+        for cat in self.cat_to_num_words:
+            cat_score[cat] = self.score_for_category(feature_counts, cat)
+
+        for cat in cat_score:
+            if best_category is None or cat_score[cat] > cat_score[best_category]:
+                best_category = cat
+
         return best_category
 
     def prediction_accuracy(self, dataset):
@@ -118,3 +132,5 @@ class NaiveBayesClassifier:
         """ Returns the topn features, that have the highest log-odds ratio for a category."""
         words = [word for word, cat in self.word_and_cat_to_count if cat == category]
         return sorted(words, key=lambda word: self.log_odds_for_word(word, category), reverse=True)[:topn]
+
+
