@@ -124,9 +124,17 @@ class NaiveBayesClassifier:
             = log[P(word|category)*P(category)] - log[P(word|other_category1)*P(other_category1)
               + P(word|other_category2)*P(other_category2) + ...]
         """
-        # TODO: Exercise 5.
-        # ODOT
-        return 0
+        categoryLog_probability = self.log_probability(word, category) + math.log(self.category_to_prior[category])
+        rest_score = 0
+
+        for something in self.category_to_prior:
+            if something != category:
+                counter = (self.word_and_cat_to_count.get((word, something), 0) + self.smoothing) * self.category_to_prior[
+                    something]
+                common = self.cat_to_num_words[something] + self.smoothing * self.vocabsize
+                rest_score += counter / common
+        score_others = math.log(rest_score)
+        return categoryLog_probability - score_others
 
     def features_for_category(self, category, topn=10):
         """ Returns the topn features, that have the highest log-odds ratio for a category."""
