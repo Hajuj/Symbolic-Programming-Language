@@ -3,8 +3,10 @@ from nltk import word_tokenize
 import sys
 import math
 
+
 def normalized_tokens(text):
     return [token.lower() for token in word_tokenize(text)]
+
 
 class DataInstance:
     def __init__(self, feature_counts, label):
@@ -31,7 +33,6 @@ class DataInstance:
         with open(filename, 'r') as myfile:
             token_list = normalized_tokens(myfile.read().strip())
         return cls.from_list_of_feature_occurrences(token_list, label)
-
 
 
 class Dataset:
@@ -114,9 +115,15 @@ class NaiveBayesClassifier:
 
     def prediction_accuracy(self, dataset):
         """ Returns the accuracy of this classifier on a test set."""
-        # TODO: Exercise 4.
-        # ODOT
-        return 0
+        pred = []
+        data = dataset.instance_list
+        for i in data:
+            result = self.prediction(i.feature_counts)
+            if result == i.label:
+                pred += [i]
+            elif data == 0:
+                return 0
+        return len(pred) / len(data)
 
     def log_odds_for_word(self, word, category):
         """ This computes the log-odds for one word only.
@@ -140,5 +147,3 @@ class NaiveBayesClassifier:
         """ Returns the topn features, that have the highest log-odds ratio for a category."""
         words = [word for word, cat in self.word_and_cat_to_count if cat == category]
         return sorted(words, key=lambda word: self.log_odds_for_word(word, category), reverse=True)[:topn]
-
-
