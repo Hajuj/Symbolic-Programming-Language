@@ -93,11 +93,23 @@ class KNNClassifier:
 
     def labels_k_closest(self, sorted_distances):
         #TODO find the labels for the k closest points
-        pass
+        result = []
+        all = sorted_distances[0:self.n_neighbors]
+        for (similarity, category) in all:
+            result.append(category)
+        return result
 
     def choose_one(self, labels) :
         #TODO reduce k until you find a unique winner
-        pass
+        i = self.n_neighbors
+        all_list = Counter(labels)
+        most_list = all_list.most_common(i)
+        while most_list[1][1] == most_list[0][1] and len(most_list) >= 1:
+            if i > 2:
+                i -= 1
+            else:
+                break
+        return most_list[0][0]
 
     def classify(self, test_file):
         #TODO classify test document
