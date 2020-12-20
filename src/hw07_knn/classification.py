@@ -77,11 +77,19 @@ class KNNClassifier:
 
     def calculate_similarities(self, vecTestDoc, vectorsOfTrainDocs):
         #TODO calculate similarities between test and train documents and label them [(similarity, label),...]
-        pass
+        similarities = []
+
+        for doc in vectorsOfTrainDocs:
+            similarity = self.doc_collection.cosine_similarity(vecTestDoc, doc[1])
+            label = doc[0].category
+            similarities.append((similarity, label))
+
+        return similarities
 
     def order_nearest_to_farthest(self, distances):
         #TODO order the labeled points from nearest to farthest
-        pass
+        sorted_distances = sorted(distances, key=lambda x: x[0], reverse=True)
+        return sorted_distances
 
     def labels_k_closest(self, sorted_distances):
         #TODO find the labels for the k closest points
