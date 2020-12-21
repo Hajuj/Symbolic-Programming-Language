@@ -104,7 +104,7 @@ class KNNClassifier:
         i = self.n_neighbors
         all_list = Counter(labels)
         most_list = all_list.most_common(i)
-        while most_list[1][1] == most_list[0][1] and len(most_list) >= 1:
+        while len(most_list) > 1 and most_list[1][1] == most_list[0][1]:
             if i > 2:
                 i -= 1
             else:
