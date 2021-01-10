@@ -34,7 +34,6 @@ class Reader:
     def data_to_vectorspace(self):
         return [self.vectorspaced(course) for course in self.courses if course]
 
-
 class Kmeans:
     """performs k-means clustering"""
 
@@ -48,21 +47,18 @@ class Kmeans:
 
     def classify(self,input):
         #TODO calculate Euclidean distances between input and the means and return the mean index with min distance
-        return min(range(self.k), key=lambda i: self.distance(input, self.means[i]))
+        pass
 
     def vector_mean(self,vectors):
         #TODO calculate mean of the list of vectors
-        output = []
-        for i in zip(*vectors):
-            output = [*output, np.mean(i, axis=None)]
-        return output
+        pass
 
     def train(self, inputs):
         # choose k random points as the initial means
         self.means = random.sample(inputs, self.k)#step 1
 
         #uncomment the following line and use the given means for the unittest
-        self.means = [inputs[32], inputs[67], inputs[46]]
+        #self.means = [inputs[32], inputs[67], inputs[46]]
 
         assignments = None
         iter = 0
