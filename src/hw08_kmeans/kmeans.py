@@ -15,23 +15,24 @@ class Reader:
         #TODO return list of courses from file
         pass
 
-    def normalize_word(self,word):
-        #TODO normalize word by lower casing and deleting punctuation from word
-        #TODO use set of punctuation symbols self.punctuation
+    def normalize_word(self, word):
+        # TODO 2 normalize word by lower casing and deleting punctuation from word
+        # TODO use set of punctuation symbols self.punctuation
         pass
 
     def get_vocabulary(self):
-        #TODO return list of unique words from file and sort them alphabetically
+        # TODO 3 return list of unique words from file and sort them alphabetically
         pass
 
-    def vectorspaced(self,course):
-        #TODO represent course by one-hot vector: vector filled with 0s, except for a 1 at the position associated with word in vocabulary
-        #TODO length of vector should be equal vocabulary size
+    def vectorspaced(self, course):
+        # TODO 4 represent course by one-hot vector: vector filled with 0s, except for a 1 at the position associated with word in vocabulary
+        # TODO length of vector should be equal vocabulary size
         pass
 
 
     def data_to_vectorspace(self):
         return [self.vectorspaced(course) for course in self.courses if course]
+
 
 class Kmeans:
     """performs k-means clustering"""
@@ -46,18 +47,21 @@ class Kmeans:
 
     def classify(self,input):
         #TODO calculate Euclidean distances between input and the means and return the mean index with min distance
-        pass
+        return min(range(self.k), key=lambda i: self.distance(input, self.means[i]))
 
     def vector_mean(self,vectors):
         #TODO calculate mean of the list of vectors
-        pass
+        output = []
+        for i in zip(*vectors):
+            output = [*output, np.mean(i, axis=None)]
+        return output
 
     def train(self, inputs):
         # choose k random points as the initial means
         self.means = random.sample(inputs, self.k)#step 1
 
         #uncomment the following line and use the given means for the unittest
-        #self.means = [inputs[32], inputs[67], inputs[46]]
+        self.means = [inputs[32], inputs[67], inputs[46]]
 
         assignments = None
         iter = 0
