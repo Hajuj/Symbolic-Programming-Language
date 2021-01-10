@@ -15,19 +15,20 @@ class Reader:
         #TODO return list of courses from file
         pass
 
-    def normalize_word(self, word):
-        # TODO 2 normalize word by lower casing and deleting punctuation from word
-        # TODO use set of punctuation symbols self.punctuation
+    def normalize_word(self,word):
+        #TODO normalize word by lower casing and deleting punctuation from word
+        #TODO use set of punctuation symbols self.punctuation
         pass
 
     def get_vocabulary(self):
-        # TODO 3 return list of unique words from file and sort them alphabetically
+        #TODO return list of unique words from file and sort them alphabetically
         pass
 
-    def vectorspaced(self, course):
-        # TODO 4 represent course by one-hot vector: vector filled with 0s, except for a 1 at the position associated with word in vocabulary
-        # TODO length of vector should be equal vocabulary size
+    def vectorspaced(self,course):
+        #TODO represent course by one-hot vector: vector filled with 0s, except for a 1 at the position associated with word in vocabulary
+        #TODO length of vector should be equal vocabulary size
         pass
+
 
 
     def data_to_vectorspace(self):
