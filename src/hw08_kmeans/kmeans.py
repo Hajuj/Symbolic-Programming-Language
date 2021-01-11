@@ -27,9 +27,8 @@ class Reader:
     def vectorspaced(self,course):
         #TODO represent course by one-hot vector: vector filled with 0s, except for a 1 at the position associated with word in vocabulary
         #TODO length of vector should be equal vocabulary size
-        pass
-
-
+        vek = [(x in self.normalize_word(course).split(' ')) for x in self.vocabulary]
+        return list(map(int,vek))
 
     def data_to_vectorspace(self):
         return [self.vectorspaced(course) for course in self.courses if course]
@@ -43,12 +42,14 @@ class Kmeans:
         self.means = None
 
     def distance(self, x,y):
-        #TODO calculate Euclidean distance between two vectors x and y
-        pass
+        sum = 0
+        for i in range(len(x)):
+            sum += (x[i] - y[i])**2
+        return np.sqrt(sum)
 
     def classify(self,input):
         #TODO calculate Euclidean distances between input and the means and return the mean index with min distance
-        return min(range(self.k), key=lambda i: self.distance(input, self.means[i]))
+
 
     def vector_mean(self,vectors):
         #TODO calculate mean of the list of vectors

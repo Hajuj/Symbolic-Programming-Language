@@ -2,7 +2,7 @@ from unittest import TestCase
 from hw08_kmeans.kmeans import Reader
 from hw08_kmeans.kmeans import Kmeans
 
-filename= "data/courses.txt"
+filename= "../data/courses.txt"
 
 class ClusteringTest(TestCase):
 
