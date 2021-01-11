@@ -41,7 +41,7 @@ class Kmeans:
         self.k = k
         self.means = None
 
-    def distance(self, x,y):
+    def distance(self, x,y):∆
         sum = 0
         for i in range(len(x)):
             sum += (x[i] - y[i])**2
