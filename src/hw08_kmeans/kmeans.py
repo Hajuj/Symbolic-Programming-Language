@@ -12,21 +12,28 @@ class Reader:
         self.vector_spaced_data = self.data_to_vectorspace()
 
     def get_lines(self):
-        #TODO return list of courses from file
-        pass
+        lines = []
+        with open(self.path, "r") as f:
+            line = f.readline()
+            while line != "":
+                lines.append(line.strip())
+                line = f.readline()
+
+        return lines
 
     def normalize_word(self,word):
-        #TODO normalize word by lower casing and deleting punctuation from word
-        #TODO use set of punctuation symbols self.punctuation
-        pass
+        word.translate(None, string.punctuation)
+        return word.lower()
+
 
     def get_vocabulary(self):
-        #TODO return list of unique words from file and sort them alphabetically
-        pass
+        wordsInFile = [self.normalize_word(x) for x in self.get_lines()]
+        vocabulary = set()
+        for elem in wordsInFile:
+            vocabulary = vocabulary.union(elem.split(' '))
+        return sorted(vocabulary)
 
     def vectorspaced(self,course):
-        #TODO represent course by one-hot vector: vector filled with 0s, except for a 1 at the position associated with word in vocabulary
-        #TODO length of vector should be equal vocabulary size
         vek = [(x in self.normalize_word(course).split(' ')) for x in self.vocabulary]
         return list(map(int,vek))
 
@@ -48,11 +55,9 @@ class Kmeans:
         return np.sqrt(sum)
 
     def classify(self,input):
-        #TODO calculate Euclidean distances between input and the means and return the mean index with min distance
         return min(range(self.k), key=lambda i: self.distance(input, self.means[i]))
 
     def vector_mean(self,vectors):
-        #TODO calculate mean of the list of vectors
         output = []
         for i in zip(*vectors):
             output = [*output, np.mean(i, axis=None)]
