@@ -22,7 +22,7 @@ class Reader:
         return lines
 
     def normalize_word(self,word):
-        word.translate(None, string.punctuation)
+        word = word.translate(str.maketrans('', '', string.punctuation))
         return word.lower()
 
 
