@@ -41,7 +41,7 @@ class Kmeans:
         self.k = k
         self.means = None
 
-    def distance(self, x,y):∆
+    def distance(self, x,y):
         sum = 0
         for i in range(len(x)):
             sum += (x[i] - y[i])**2
@@ -49,7 +49,7 @@ class Kmeans:
 
     def classify(self,input):
         #TODO calculate Euclidean distances between input and the means and return the mean index with min distance
-
+        return min(range(self.k), key=lambda i: self.distance(input, self.means[i]))
 
     def vector_mean(self,vectors):
         #TODO calculate mean of the list of vectors
