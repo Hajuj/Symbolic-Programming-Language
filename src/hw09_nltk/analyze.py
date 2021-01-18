@@ -1,3 +1,4 @@
+import nltk #TODO DELETE
 from nltk import FreqDist
 from nltk import word_tokenize
 
@@ -38,15 +39,22 @@ class Analyzer(object):
     def topSuffixes(self):
         """returns the 10 most frequent 2-letter suffixes in words
             (restrict to words of length 5 or more)"""
-        pass
+        sufCount= nltk.FreqDist([wort[-2:] for wort in self.tokens_counts if len(wort >=5)])
+        sorted_counts = sorted(sufCount.items(), key=lambda x: x[1], reverse=True)
+        return sorted_counts[:10]
 
     def topPrefixes(self):
         """returns the 10 most frequent 2-letter prefixes in words
             (restrict to words of length 5 or more)"""
-        pass
+        preCount = nltk.FreqDist([wort[:2] for wort in self.tokens_counts if len(wort >= 5)])
+        sorted_counts = sorted(preCount.items(), key=lambda x: x[1], reverse=True)
+        return sorted_counts[:10]
 
     def tokensTypical(self):
         """returns first 5 tokens of the (alphabetically sorted) vocabulary
         that contain both often seen prefixes and suffixes in the text. As in topPrefixes()
         and topSuffixes(), Prefixes and Suffixes are 2 characters long."""
-        pass
+        topPre = self.topPrefixes()
+        topSuf = self.topSuffixes()
+        typicalTokens = [top for top in self.token_counts if top[-2:] in topSuf and top[:2] in topPre ]
+        return sorted(typicalTokens)[:5]
