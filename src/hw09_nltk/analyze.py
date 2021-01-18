@@ -1,40 +1,44 @@
-import nltk #TODO DELETE
+import nltk 
 from nltk import FreqDist
 from nltk import word_tokenize
-
 
 class Analyzer(object):
     def __init__(self, path):
         """reads the file text, creates the list of words (use nltk.word_tokenize to tokenize the text),
             and calculates frequency distribution """
-        self.text = None  # TODO the list of words from text file
-        self.token_counts = None  # TODO frequency distribution of words from text file
+        h = open(path)
+        self.text = nltk.word_tokenize(h.read())
+        self.token_counts = nltk.FreqDist(self.text)
         pass
 
     def numberOfTokens(self):
         """returns number of tokens in the text """
-        pass
+        return len(self.text)
 
     def vocabularySize(self):
         """returns a list of the vocabulary of the text """
-        pass
+        return len(self.token_counts)
 
     def lexicalDiversity(self):
         """returns the lexical diversity of the text """
-        pass
+        return self.numberOfTokens() / self.vocabularySize()
 
     def getKeywords(self):
         """return words as possible key words, that are longer than seven characters, that occur more than seven
         times (sorted alphabetically) """
-        pass
+        return sorted([keyword for (keyword,wert) in self.token_counts.items() if len(keyword) > 7 and wert > 7])
+
 
     def numberOfHapaxes(self):
         """returns the number of hapaxes in the text"""
-        pass
+        return len(self.token_counts.hapaxes())
 
     def avWordLength(self):
         """returns the average word length of the text"""
-        pass
+        laenge = 0
+        for wort in self.token_counts:
+            laenge += len(wort)
+        return laenge / self.vocabularySize()
 
     def topSuffixes(self):
         """returns the 10 most frequent 2-letter suffixes in words
@@ -58,3 +62,4 @@ class Analyzer(object):
         topSuf = self.topSuffixes()
         typicalTokens = [top for top in self.token_counts if top[-2:] in topSuf and top[:2] in topPre ]
         return sorted(typicalTokens)[:5]
+
