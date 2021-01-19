@@ -1,4 +1,3 @@
-import nltk 
 from nltk import FreqDist
 from nltk import word_tokenize
 
@@ -7,8 +6,8 @@ class Analyzer(object):
         """reads the file text, creates the list of words (use nltk.word_tokenize to tokenize the text),
             and calculates frequency distribution """
         h = open(path)
-        self.text = nltk.word_tokenize(h.read())
-        self.token_counts = nltk.FreqDist(self.text)
+        self.text = word_tokenize(h.read())
+        self.token_counts = FreqDist(self.text)
         pass
 
     def numberOfTokens(self):
@@ -43,14 +42,14 @@ class Analyzer(object):
     def topSuffixes(self):
         """returns the 10 most frequent 2-letter suffixes in words
             (restrict to words of length 5 or more)"""
-        sufCount= nltk.FreqDist([wort[-2:] for wort in self.token_counts if len(wort) >=5])
+        sufCount= FreqDist([wort[-2:] for wort in self.token_counts if len(wort) >=5])
         sorted_counts = [suffix for suffix, count in sorted(sufCount.items(), key=lambda x: x[1], reverse=True)]
         return sorted_counts[:10]
 
     def topPrefixes(self):
         """returns the 10 most frequent 2-letter prefixes in words
             (restrict to words of length 5 or more)"""
-        preCount = nltk.FreqDist([wort[:2] for wort in self.token_counts if len(wort) >= 5])
+        preCount = FreqDist([wort[:2] for wort in self.token_counts if len(wort) >= 5])
         sorted_counts =[prefix for prefix, count in sorted(preCount.items(), key=lambda x: x[1], reverse=True)]
         return sorted_counts[:10]
 
