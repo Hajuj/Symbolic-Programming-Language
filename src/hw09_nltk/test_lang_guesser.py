@@ -1,7 +1,9 @@
 from unittest import TestCase
 from hw09_nltk.model_lang import LangModeler
 from nltk.corpus import udhr
-#run with  python3 -m unittest -v hw09_nltk/test_lang_guesser.py
+
+
+# run with  python3 -m unittest -v hw09_nltk/test_lang_guesser.py
 
 class LangGuesserTest(TestCase):
 
@@ -16,8 +18,8 @@ class LangGuesserTest(TestCase):
 
     def test_01_unigram_word_models(self):
         language_model_cfd = self.langModeler.build_language_models()
-        some_word_counts_inEnglish = [language_model_cfd['English'][w] for w in ['universal','declaration','of']]
-        self.assertEqual(some_word_counts_inEnglish, [5,6,81])
+        some_word_counts_inEnglish = [language_model_cfd['English'][w] for w in ['universal', 'declaration', 'of']]
+        self.assertEqual(some_word_counts_inEnglish, [5, 6, 81])
 
     def test_02_guess(self):
         text1 = "Peter had been to the office before they arrived."
