@@ -27,5 +27,9 @@ class HyponymSearcher(object):
         return False
 
     def get_hyponyms(self,hypernym):
-        #TODO determine set of noun lemmas in ada_lovelace.txt that are hyponyms of the given hypernym
-        pass
+        hyponym = []
+        for lemmas in self.noun_lemmas:
+            for synset3 in wordnet.synsets(lemmas):
+                if self.hypernymOf(synset3, hypernym):
+                    hyponym.append(lemmas)
+        return set(hyponym)
