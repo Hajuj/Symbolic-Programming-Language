@@ -26,7 +26,7 @@ class HyponymSearcher(object):
                 return True
         return False
 
-    def get_hyponyms(self,hypernym)
+    def get_hyponyms(self,hypernym):
         hyponym = []
         for lemmas in self.noun_lemmas:
             for synset3 in wordnet.synsets(lemmas):
