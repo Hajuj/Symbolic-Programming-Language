@@ -1,0 +1,90 @@
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.033s
+
+OK
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.030s
+
+OK
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.031s
+
+OK
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.031s
+
+OK
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.031s
+
+OK
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.033s
+
+OK
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.031s
+
+OK
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.032s
+
+OK
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.031s
+
+OK
+/home/w/wangyind/PycharmProjects/sp2021/scripts/tmp_repositories/abgabe/hw09_nltk/Habibiz/src/hw09_nltk/test_analyzer.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/w/wangyind/PycharmProjects/sp2021/homework_dev/data/ada_lovelace.txt' mode='r' encoding='UTF-8'>
+  self.analyzer = Analyzer(path)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.033s
+
+OK
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+OK
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.020s
+
+OK
