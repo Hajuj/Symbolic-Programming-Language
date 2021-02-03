@@ -24,7 +24,6 @@ class AnalysisTest(TestCase):
         self.assertEqual(self.tokens_normalized[:4], ['advertisement', 'supported', 'behind', 'wheel'])
 
     def test_04_pos_dict(self):
-        print(self.tagsDict)
         self.assertEqual(self.tagsDict["driving"], {'NN', 'VBG'})
         self.assertEqual(len(self.tagsDict), 514)
 
