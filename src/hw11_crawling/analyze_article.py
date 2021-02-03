@@ -57,7 +57,6 @@ def filter_dict_homographs(word_dict_h):
         tag = word_dict_h[word]
         if len(tag) < 2:
              word_dict_h.pop(word)
-    print(word_dict_h)
     return word_dict_h
 
 
