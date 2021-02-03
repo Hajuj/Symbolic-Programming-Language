@@ -65,6 +65,6 @@ def find_homographs(tokens):
     # TODO return a dictionary which holds homographs
     tags = get_pos_dict(tokens)
     filter_dict_homographs(tags)
-    homographs = dict((w, tags) for w, tags in tags.items() if len(tags) > 1)
+    homographs = dict(tags)
     return homographs
 
