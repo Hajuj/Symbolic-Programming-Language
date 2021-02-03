@@ -11,12 +11,23 @@ def get_html(url):
 def get_text(html):
     # TODO create the list of clean paragraphs (no HTML markup) from the given html
     # TODO return paragraphs as a string. Hint: join the list of paragraphs by newline
-    pass
+    soup = bs4.BeautifulSoup(html, 'html.parser')
+    div = soup.find_all('p')
+    str = ""
+    for p in div:
+        if p ==div[len(div)-1]:
+            str+=  p.get_text()
+        else:
+            str += (p.get_text() + "\n")
+    return str
 
 
 def get_headline(html):
     # TODO return the headline of html
-    pass
+    soup = bs4.BeautifulSoup(html, 'html.parser')
+
+    return soup.title.text
+
 
 
 def get_normalized_tokens(text):
@@ -37,4 +48,3 @@ def filter_dict_homographs(word_dict_h):
 def find_homographs(tokens):
     # TODO return a dictionary which holds homographs
     pass
-
