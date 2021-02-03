@@ -1,3 +1,5 @@
+import string
+
 import nltk
 import urllib.request
 import bs4
@@ -38,14 +40,29 @@ def get_normalized_tokens(text):
 
 def get_pos_dict(tokens):
     # TODO return a dictionary of homographs (a dictionary of words and their possible POS)
-    pass
+    stop_words = set(nltk.corpus.stopwords.words('english'))
+    filtered_text = [w.lower() for w in tokens if w not in stop_words]
+    pos_tags = nltk.pos_tag(filtered_text)
 
+    alltags = defaultdict(set)
+
+    for word, tag in pos_tags:
+        alltags[word].add(tag)
+
+    return alltags
 
 def filter_dict_homographs(word_dict_h):
     # TODO delete an entry from dictionary, if not a homograph
-    pass
+    for word in list(word_dict_h):
+        tag = word_dict_h[word]
+        if len(tag) < 2:
+             word_dict_h.pop(word)
+    print(word_dict_h)
+    return word_dict_h
+
 
 
 def find_homographs(tokens):
     # TODO return a dictionary which holds homographs
+
     pass
