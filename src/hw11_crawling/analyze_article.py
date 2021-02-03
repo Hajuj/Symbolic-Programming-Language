@@ -26,7 +26,7 @@ def get_headline(html):
     # TODO return the headline of html
     soup = bs4.BeautifulSoup(html, 'html.parser')
 
-    return soup.title.text
+    return soup.title.string.split("-",1)[0][:-1]
 
 
 
