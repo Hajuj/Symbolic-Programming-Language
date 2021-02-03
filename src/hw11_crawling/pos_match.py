@@ -1,3 +1,4 @@
+import nltk
 
 
 class Sentences:
@@ -17,8 +18,14 @@ class Sentences:
         """Create an instance of the class Sentences from a
         path. Reads the file and pos-tags the sentences in the
         file. [2 point]"""
-        pass
-
+        h = open(path)
+        sentences = nltk.sent_tokenize(h.read())
+        tags = []
+        for sentence in sentences:
+            tokens = nltk.word_tokenize(sentence)
+            pos_tags = nltk.pos_tag(tokens)
+            tags.append(pos_tags)
+        return tags
 
 class PosExpr:
     def __init__(self, expressions):
@@ -30,7 +37,8 @@ class PosExpr:
     def from_string(cls, expr):
         """Create an instance of the class PosExpr from the given
         string.  [0 points]"""
-        pass
+        return cls(nltk.word_tokenize(expr))
+
 
     @staticmethod
     def match_expr(expr, pos):
@@ -38,7 +46,16 @@ class PosExpr:
         'XX' matches if pos equals 'XX', the expression '*' matches
         any pos and an expression XX* matches if pos starts with 'XX'
         or is equal to 'XX'.  [2 points]"""
-        pass
+        if expr == "*":
+            return True
+        elif len(expr) == len(pos) or "*" in expr:
+            if expr[0] == expr[1] and pos[0] == pos[1]:
+                return True
+            elif expr[0] != expr[1] and pos[0] != pos[1]:
+                return True
+        else:
+            return False
+
 
     def matches(self, sentence):
         """This method returns the list of matches in a pos-tagged
