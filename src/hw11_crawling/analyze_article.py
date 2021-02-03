@@ -14,7 +14,6 @@ def get_text(html):
     soup = bs4.BeautifulSoup(html, 'html.parser')
     div = soup.find_all('p')
     str = ""
-    print(div)
     for p in div:
             str += (p.get_text() + "\n")
     str = str[:-1]
@@ -32,7 +31,6 @@ def get_normalized_tokens(text):
     # TODO tokenize the text with NLTK and return list of lower case tokens without stopwords
     stop_words = set(nltk.corpus.stopwords.words('english'))
     word_tokens = nltk.word_tokenize(text)
-    print(text)
     filtered_text = [w.lower() for w in word_tokens if w not in stop_words]
     return filtered_text
     pass
