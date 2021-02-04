@@ -1,5 +1,3 @@
-import string
-
 import nltk
 import urllib.request
 import bs4
@@ -15,11 +13,11 @@ def get_text(html):
     # TODO return paragraphs as a string. Hint: join the list of paragraphs by newline
     soup = bs4.BeautifulSoup(html, 'html.parser')
     div = soup.find_all('p')
-    str = ""
+    new_str = ""
     for p in div:
-            str += (p.get_text() + "\n")
-    str = str[:-1]
-    return str
+        new_str += (p.get_text() + "\n")
+    new_str = new_str[:-1]
+    return new_str
 
 
 def get_headline(html):
@@ -51,14 +49,14 @@ def get_pos_dict(tokens):
 
     return alltags
 
+
 def filter_dict_homographs(word_dict_h):
     # TODO delete an entry from dictionary, if not a homograph
     for word in list(word_dict_h):
         tag = word_dict_h[word]
         if len(tag) < 2:
-             word_dict_h.pop(word)
+            word_dict_h.pop(word)
     return word_dict_h
-
 
 
 def find_homographs(tokens):
@@ -67,4 +65,3 @@ def find_homographs(tokens):
     filter_dict_homographs(tags)
     homographs = dict(tags)
     return homographs
-

@@ -20,12 +20,14 @@ class Sentences:
         file. [2 point]"""
         h = open(path)
         sentences = nltk.sent_tokenize(h.read())
+        h.close()
         tags = []
         for sentence in sentences:
             tokens = nltk.word_tokenize(sentence)
             pos_tags = nltk.pos_tag(tokens)
             tags.append(pos_tags)
         return tags
+
 
 class PosExpr:
     def __init__(self, expressions):
@@ -38,7 +40,6 @@ class PosExpr:
         """Create an instance of the class PosExpr from the given
         string.  [0 points]"""
         return cls(nltk.word_tokenize(expr))
-
 
     @staticmethod
     def match_expr(expr, pos):
@@ -55,7 +56,6 @@ class PosExpr:
                 return True
         else:
             return False
-
 
     def matches(self, sentence):
         """This method returns the list of matches in a pos-tagged
