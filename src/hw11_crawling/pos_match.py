@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 import nltk
 
 
@@ -26,7 +28,8 @@ class Sentences:
             tokens = nltk.word_tokenize(sentence)
             pos_tags = nltk.pos_tag(tokens)
             tags.append(pos_tags)
-        return tags
+        h.close()
+        return cls(tags)
 
 
 class PosExpr:
@@ -63,11 +66,28 @@ class PosExpr:
         (word, pos)-pairs, where the tags in the sentence matched the
         expression mask provided by PosExpr for all possible
         positions.  [4 points]"""
-        pass
+        if len(self.expressions == 0):
+            return []
+        matches = []
+        n = len(self.expressions)
+        for i in range(0, len(sentence)):
+            if PosExpr.match_expr(self.expressions[-1], sentence[i][1]):
+                if PosExpr.match_all(self.expressions[0:-1], sentence[i - n + 1:i]):
+                    matches.append(sentence[i - n + 1:i + 1])
+        return matches
 
+    @staticmethod
+    def match_all(expressions, tuples):
+        if len(expressions) != len(tuples):
+            return False
+
+        for i in range(0, len(expressions)):
+            if not PosExpr.match_expr(expressions[i], tuples[i][1]):
+                return False
+        return True
 
 def find(sentences, expr):
     """Return a list of strings that match the given expression. E.g.
-    `find_string(sentences, "JJ NN") should return the list
-    [...,"prior year",...].  [2 points]"""
-    pass
+    `find_string(sentences, "JJ NN") should return the list        [...,"prior year",...].  [2 points]"""
+    m = PosExpr.from_string(expr)
+    return [" ".join([w for w, _ in ms]) for s in sentences for ms in m.matches(s)]
